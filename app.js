@@ -48,7 +48,7 @@ app.get('/',function(req,res){
   res.sendFile(__dirname+'/views/index.html');
 });
 app.post("/api/token", function(req, res) {
-
+  console.log(req.body);
   db.collection(USERS_COLLECTION).findOne({name:req.body.name},function(err, user) {
 
     if (err) {
@@ -100,6 +100,7 @@ app.use(auth);
 
 app.get('/api/:user/projects', function(req,res){
    var userID = req.params.user;
+   console.log(req.body);
    db.collection(USERS_COLLECTION).find({"_id":ObjectID(userID)}).toArray(function(err,docs){
      if(err) res.json({'message':err}); else res.json(docs[0].projects);
    });
