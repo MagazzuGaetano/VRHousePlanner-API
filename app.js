@@ -102,7 +102,7 @@ app.post("/api/register", function(req, res) {
 });
 
 //apply the middleware function to the routes below
-//app.use(auth);
+app.use(auth);
 
 app.get('/api/:user/projects', function(req,res){
    var userID = req.params.user;
