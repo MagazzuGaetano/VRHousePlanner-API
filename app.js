@@ -11,7 +11,13 @@ const uuidV4 = require('uuid/v4');
 var USERS_COLLECTION = "users";
 
 var app = express();
-app.use(cors());
+var corsOptions = {
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}
+app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.json());
 
