@@ -68,7 +68,7 @@ app.post("/api/token", function(req, res) {
          }
           else
           {
-           var token = jwt.sign(user,'idc');
+           var token = jwt.sign({name: user.name, password: user.password, _id:user._id},'idc');
            res.json({success: true,message: 'Enjoy your token!',token: token});
          }
      });
